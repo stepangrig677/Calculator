@@ -3,16 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Calculator.Models;
 
 namespace Calculator.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Калькулятор";
+            ResultModels model = new ResultModels();
+            return View(model);
+        }
 
-            return View();
+        [HttpPost]
+
+        public ActionResult Index(ResultModels model)
+        {
+            ViewBag.Title = "Калькулятор";
+
+            return View(model);
         }
     }
 }

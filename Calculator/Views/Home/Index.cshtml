@@ -1,9 +1,7 @@
-﻿
+﻿@model Calculator.Models.ResultModels
 <form>
     <div class="form-group">
-        <input type="text" class="form-control" id="result">
-
-
+        <input type="text" class="form-control" id="result" value="@(Model.Result)">
         <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group mr-2" role="group" aria-label="First group">
                 <button type="button" class="btn btn-secondary" id="1">1</button>
@@ -42,3 +40,6 @@
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
 </form>
+@section Scripts {
+   <script>$(".btn-secondary").click(function () { $("input")[0].value += this.id })</script>
+}
