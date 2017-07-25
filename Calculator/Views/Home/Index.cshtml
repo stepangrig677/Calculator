@@ -1,7 +1,15 @@
 ﻿@model Calculator.Models.ResultModels
-<form>
+    <style>
+    .btn.btn-secondary {
+        width: 50px;
+    }
+    #Operations {
+        width: 200px;
+    }
+    </style>
+<form method="post" action="">
     <div class="form-group">
-        <input type="text" class="form-control" id="result" value="@(Model.Result)">
+        <input type="text" name="Operations"  class="form-control" id="Operations" value="@Model.Operations">
         <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group mr-2" role="group" aria-label="First group">
                 <button type="button" class="btn btn-secondary" id="1">1</button>
@@ -32,14 +40,14 @@
         <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group" role="group" aria-label="First group">
                 <button type="button" class="btn btn-secondary" id="0">0</button>
-                <button type="button" class="btn btn-secondary" id="(">(</button>
-                <button type="button" class="btn btn-secondary" id=")">)</button>
+                <button type="button" class="btn btn-secondary" id=",">,</button>
+                <button  type="submit" class="btn btn-secondary">=</button>
                 <button type="button" class="btn btn-secondary" id="/">/</button>
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
 </form>
 @section Scripts {
-   <script>$(".btn-secondary").click(function () { $("input")[0].value += this.id })</script>
+    <script>$(".btn-secondary").click(function () { $("input")[0].value += this.id })</script>
 }
+
