@@ -23,7 +23,7 @@ namespace Calculator.Controllers
         [HttpPost]
         public ActionResult Index(ResultModels model)
         {
-            var ip = System.Web.HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            string ip = System.Web.HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
 
             if (System.Web.HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"] != null)
             {
@@ -47,13 +47,17 @@ namespace Calculator.Controllers
             DB.SaveChanges();
             try
             {
-                model.Operations = Caclulate(model.Operations).ToString();
-                //DB.SaveChanges();
+                log.Result = Caclulate(model.Operations);
+                model.Operations=log.Result.ToString();
+                DB.Logs.Add(log);
+                DB.SaveChanges();
                 return View(model);
             }
             catch
             {
-                //DB.SaveChanges();
+                log.Result = 0;
+                DB.Logs.Add(log);
+                DB.SaveChanges();
                 return View("Error");
             }
 
