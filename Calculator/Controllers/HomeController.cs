@@ -43,8 +43,6 @@ namespace Calculator.Controllers
                 IpAddress = ip,
                 Operands = model.Operations
             };
-            DB.Logs.Add(log);
-            DB.SaveChanges();
             try
             {
                 log.Result = Caclulate(model.Operations);
